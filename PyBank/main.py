@@ -26,7 +26,7 @@ with open(csvpath) as csvfile:
         totalmonths= len(list(csvreader))
 
         # Add Net Total Profits 
-        #csv_header = next(csvfile) -----STUCK HERE-----
+        #csv_header = next(csvfile) -----STUCK HERE----
         #netprofits += int(row[1]) -----STUCK HERE-----
            
         # Add Average Change in Profit/Losses
