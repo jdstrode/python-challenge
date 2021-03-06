@@ -6,27 +6,26 @@ import os
 # Module for reading CSV files
 import csv
 
+#csvpath = pointer to file
+#csvfile = "name of file"
+#csvreader = "data within file"
+
 # Specify the file to READ to
 csvpath = os.path.join('Resources', 'budget_data.csv')
 
-# totalmonths = []
-profits = 0 
+totalmonths = 0
+profits = 0
 
 # Open the file using "write" mode. Specify the variable to hold the contents
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
-    # csv_header = next(csvfile) #skip first row <--- DO I NEED THIS???
+    next(csvreader) #skip first row 
+
+    #------------ Data to pull from CSVFILE---------------     
     for row in csvreader:
-        #print(row) #this will print the csvfile
-
-#------------ Data to pull from CSVFILE---------------   
-     
+        profits += int(row[1])
         # Add total months 
-        totalmonths= len(list(csvreader))
-
-        # Add Net Total Profits 
-        #csv_header = next(csvfile) -----STUCK HERE----
-        #netprofits += int(row[1]) -----STUCK HERE-----
+        totalmonths = totalmonths + 1
 
         # Add Average Change in Profit/Losses
         # headerline = csvfile.next()
@@ -45,7 +44,7 @@ with open(csvpath) as csvfile:
         # Add Greatest Increase in Profits
         # Reverse of above should work for for greatest dec?
 
-#------------WRITING TO OUTPUT FILE---------------
+        #------------WRITING TO OUTPUT FILE---------------
 
 # Specify the file to WRITE to
 output_path = os.path.join("analysis", "results1.txt")
@@ -67,8 +66,8 @@ with open(output_path, 'w', newline='', encoding='utf8') as txtfile:
     print(f"Total Months: {str(totalmonths)}")
 
     # Write total # of profits/losses
-    #writer.writerow([f"Total: {str(netprofits)}"]) #-----STUCK HERE-----
-    #print([f"Total: {str(netprofits)}"]) #-----STUCK HERE-----
+    writer.writerow([f"Total: {str(profits)}"]) #-----STUCK HERE-----
+    print(f"Total: {str(profits)}") #-----STUCK HERE-----
 
     # # Write average change in profit/losses
     # writer.writerow([f"Average Change: {str(netprofits)}"])
