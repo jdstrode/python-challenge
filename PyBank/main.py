@@ -39,10 +39,10 @@ with open(csvpath) as csvfile:
        #7.2 Extract the net change of the sample
         netchangevalue = int(row[1]) - previousnet
         previousnet = int(row[1])
-        netchange = netchange + [netchangevalue]
+        netchange += [netchangevalue]
         monthofchange = monthofchange + [row[0]]
 
-       # Add Greatest Increase in Profits
+        # Add Greatest Increase in Profits
         if netchangevalue > greatestincrease[1]:
             greatestincrease[0] = row[0]
             greatestincrease[1] = netchangevalue
@@ -84,9 +84,9 @@ with open(output_path, 'w', newline='', encoding='utf8') as txtfile:
     print(f"Average Change: ${str(averagechange)}")
 
     # Write greatest increase in profits (date and amount) over entire period
-    writer.writerow([f"Greatest Increase in Profits: {greatestincrease[0]}, (${str(greatestincrease[1])})"])
-    print(f"Greatest Increase in Profits: {greatestincrease[0]}, (${str(greatestincrease[1])})")
+    writer.writerow([f"Greatest Increase in Profits: {greatestincrease[0]} (${str(greatestincrease[1])})"])
+    print(f"Greatest Increase in Profits: {greatestincrease[0]} (${str(greatestincrease[1])})")
 
     # Write greatest decrease in losses (date and amount) over entire period
-    writer.writerow([f"Greatest Increase in Profits: {greatestdecrease[0]}, (${str(greatestdecrease[1])})"])
-    print(f"Greatest Increase in Profits: {greatestdecrease[0]}, (${str(greatestdecrease[1])})")
+    writer.writerow([f"Greatest Increase in Profits: {greatestdecrease[0]} (${str(greatestdecrease[1])})"])
+    print(f"Greatest Increase in Profits: {greatestdecrease[0]} (${str(greatestdecrease[1])})")
