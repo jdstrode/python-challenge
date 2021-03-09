@@ -48,14 +48,14 @@ with open(csvpath) as csvfile:
     electionresults.append(f"Total Votes: {str(totalvotes)}")
     electionresults.append("----------------------")
 
-    #credit to leilazintsem for structure to loop through dictionary, and print result for each candidate 
+    # credit to leilazintsem for structure to loop through dictionary, determine winner, and idea to print each candidates results after each loop
     for candidate in candidates_dict: 
 
         # establish variables for each result needed to print: name (candidate), percent of votes(percent), and total votes(votes)
         votes = candidates_dict[candidate] 
         percent = candidates_perc_dict[candidate]
-        electionresults.append(f'{candidate}: {percent}, ({votes})')
-        # test print(f'{candidate}: {percentage}, ({votes})')
+        electionresults.append(f'{candidate}: {percent} ({votes})')
+        # test print(f'{candidate}: {percentage} ({votes})')
         if votes > maxvote:
             maxvote = votes
             winner = candidate 

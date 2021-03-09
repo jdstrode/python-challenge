@@ -30,31 +30,34 @@ with open(csvpath) as csvfile:
     netprofits = netprofits + int(first_row[1])
     previousnet = int(first_row[1])
     
-    #------------ Data to pull from CSVFILE---------------     
+    # loop through rows in csvreader
     for row in csvreader:
 
-        totalmonths = totalmonths + 1
+        # add 1 month for every row
+        totalmonths += 1
+
+        # add up profits (everything in second column)
         netprofits = netprofits + int(row[1])
 
-       #7.2 Extract the net change of the sample
+        # save the values of all the differences from value in second column to the next value in that column into a list [netchange]
+        # classmate Daniel Atuesta assisted with some of this framework
         netchangevalue = int(row[1]) - previousnet
         previousnet = int(row[1])
         netchange += [netchangevalue]
+        # save the months from each difference into a similar list [monthofchange]
         monthofchange = monthofchange + [row[0]]
 
-        # Add Greatest Increase in Profits
+        # create if statement to compare netchangevalue (which is aggregated everytime we loop through table above) and save the final greatest value into greatestincrease variable
         if netchangevalue > greatestincrease[1]:
             greatestincrease[0] = row[0]
             greatestincrease[1] = netchangevalue
-        # Add Greatest Decrease in Profits
+        # complete the same process as in last step, but save into greatestdecrease variable
         if netchangevalue < greatestdecrease[1]:
             greatestdecrease[0] = row[0]
             greatestdecrease [1] = netchangevalue
 
-    # Add Average Change in Profit/Losses
+    # use the aggregated list of netchange, sum the totals within it, and divide by its length to get the average
     averagechange = sum(netchange)/ len(netchange)
-
-    #------------WRITING TO OUTPUT FILE---------------
 
 # Specify the file to WRITE to
 output_path = os.path.join("analysis", "results1.txt")
@@ -65,22 +68,27 @@ with open(output_path, 'w', newline='', encoding='utf8') as txtfile:
 
     # Write the first row (column headers)
     writer.writerow(["Financial Analysis"])
+    # print to terminal
     print("Financial Analysis")
 
     # Write the second row
     writer.writerow(["----------------------"])
+    # print to terminal
     print("----------------------")
 
     # Write total # of months
     writer.writerow([f"Total Months: {str(totalmonths)}"])
+    # print to terminal
     print(f"Total Months: {str(totalmonths)}")
 
     # Write total # of profits/losses
     writer.writerow([f"Total: {str(netprofits)}"]) 
+    # print to terminal
     print(f"Total: {str(netprofits)}")
 
     # Write average change in profit/losses
     writer.writerow([f"Average Change: ${str(averagechange)}"])
+    # print to terminal
     print(f"Average Change: ${str(averagechange)}")
 
     # Write greatest increase in profits (date and amount) over entire period
@@ -89,4 +97,5 @@ with open(output_path, 'w', newline='', encoding='utf8') as txtfile:
 
     # Write greatest decrease in losses (date and amount) over entire period
     writer.writerow([f"Greatest Increase in Profits: {greatestdecrease[0]} (${str(greatestdecrease[1])})"])
+    # print to terminal
     print(f"Greatest Increase in Profits: {greatestdecrease[0]} (${str(greatestdecrease[1])})")
