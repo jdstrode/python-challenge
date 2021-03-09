@@ -1,5 +1,39 @@
 # Python Homework - Py Me Up, Charlie
 
+Inside of this repository
+
+The below is a breakdown (and instructions) for a Python Homework Assignment required for the Data Science Bootcamp @ Northwestern University.
+
+  There are two parts to the challenge:  PyBank and PyPoll
+  Both challenges require the student to pull specific information from a .csv file and both print it into a terminal, and write it into a .txt file. 
+
+  The PyBank folder contains:
+  -A resources folder housing the budget_data.csv file
+  -An analysis folder housing the results1.txt file
+  -A file named "main.py" containing strictly Python script I have written to complete the tasks outlined in the below challenge
+
+  The PyPoll folder contains:
+  -A resources folder housing the election_data.csv file
+  -An analysis folder housing the results2.txt file
+  -A file named "main.py" containing strictly Python script I have written to complete the tasks outlined in the below challenge
+
+Both projects demonstrate my ability to utilize python scripting to do the following:
+  -importing libraries such as "csv" and "os"
+  -Specifiying external file paths
+  -Open external files (.csv specifically)
+  -Write to external files (.txt specifically)
+  -Assigning and calling upon lists, dictionaries, variables
+  -Calling upon indexes within lists and dictionaries
+  -For loops
+  -"If.. Then.." Statements and nested "If.. Then" Statements
+  -Append values to lists
+  -Utilizing the format, print, write, csv.reader, csv.rider  
+  -Casting 
+
+Assignment instructions (below) provided by Northwestern Data Science Bootcamp
+
+Python Homework - Py Me Up, Charlie
+
 ## Background
 
 Well... you've made it!
